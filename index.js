@@ -18,7 +18,7 @@ const client = new MongoClient(process.env.MONGO_URL);
 await client.connect();
 app.use('/user', userRoutes);
 app.use('/questions', questionsRoutes);
-app.get('/', auth, (req, res) => {
+app.get('/', (req, res) => {
     res.send(" Welcome to stackoverflow clone")
 })
 
