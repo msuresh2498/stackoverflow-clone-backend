@@ -1,18 +1,17 @@
-import express, { request } from 'express';
+import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import * as dotenv from 'dotenv';
 import userRoutes from './Routes/users.js';
 import questionsRoutes from './Routes/questions.js'
 import { MongoClient } from 'mongodb'
-import { auth } from './models/auth.js';
 
 
 dotenv.config();
 const app = express()
 app.use(express.json({ limit: "30mb", extended: true }))
 app.use(express.urlencoded({ limit: "30mb", extended: true }))
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+app.use(cors());
 
 const client = new MongoClient(process.env.MONGO_URL);
 await client.connect();
